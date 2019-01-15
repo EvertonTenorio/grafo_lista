@@ -30,7 +30,7 @@ void adicionarVertice(grafo *g, char vertice){
 void adicionarAresta(grafo *g, char v1, char v2){
 	int indV1= -1, indV2 = -1, i;
 
-	if(v1 == v2){
+	if(v1 == v2 || (v1 == '0' && v2 == '0')){
 		printf("aresta invalida\n");
 		return;
 	}
@@ -49,30 +49,30 @@ void adicionarAresta(grafo *g, char v1, char v2){
 		}
 	}
 	if (indV1 != -1 && indV2 != -1) {
-		lista* l = (lista*) malloc(sizeof(lista));
-	  l->v = v2;
-	  l->prox = NULL;
+		lista* l1 = (lista*) malloc(sizeof(lista));
+	  l1->v = v2;
+	  l1->prox = NULL;
 
-	  lista* aux = g->lista[indV1];
+	  lista* aux1 = g->lista[indV1];
 
 	  while (1) {
-	    if(aux->prox == NULL){
-	      aux->prox = l;
+	    if(aux1->prox == NULL){
+	      aux1->prox = l1;
 	      break;
 	    }
-			aux = aux->prox;
+			aux1 = aux1->prox;
 		}
-
-	  l->v = v1;
-		l->prox = NULL;
-		aux = g->lista[indV2];
+		lista* l2 = (lista*) malloc(sizeof(lista));
+	  l2->v = v1;
+		l2->prox = NULL;
+		lista* aux2 = g->lista[indV2];
 
 		while (1) {
-			if(aux->prox == NULL){
-		     aux->prox = l;
+			if(aux2->prox == NULL){
+		     aux2->prox = l2;
 		     break;
 			}
-			aux = aux->prox;
+			aux2 = aux2->prox;
 		}
 	}
 }

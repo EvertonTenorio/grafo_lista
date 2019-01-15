@@ -16,7 +16,7 @@ int main(int argc, int* argv) {
 		adicionarVertice(&g, v);
 	}
 	imprimir(&g);
-	printf("\n\n");
+	printf("\n");
 
 	char a[2];
 	for(i = 0; i < arestas; i++){
